@@ -4,6 +4,6 @@
     "prompt-sync": "^4.2.0"
   },
   "scripts": {
-    "run": "node ./index.js"
+    "start": "node ./index.js"
   }
 }

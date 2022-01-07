@@ -8,5 +8,6 @@ This is a very simple JavaScript implementation of the [Little Man Computer](htt
 - `npm install` to download [`prompt-sync`](https://www.npmjs.com/package/prompt-sync), a utility package for simple synchronous command-line input
 - Edit the `index.lmc` file to load up a program - right now the computer will run a program to input two numbers and output their sum.
 - Find some example programs in the `examples/` folder, helpfully stolen from the Wikipedia Page for the LMC.
+- `npm start` to run the computer!
 
 Enjoy!
