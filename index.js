@@ -56,8 +56,6 @@ class Program {
     const compiledLabels = this.compileLabels(instructions);
     const compiledInstructions = this.compileInstructions(compiledLabels);
 
-    console.log(compiledLabels, compiledInstructions);
-
     return compiledInstructions;
   }
 
