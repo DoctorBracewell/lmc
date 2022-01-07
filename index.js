@@ -1,4 +1,5 @@
 import { readFile } from "fs/promises";
+import { LittleManComputer } from "./lmc.js";
 
 class InstructionLabel {
   constructor(value, address) {
@@ -39,7 +40,7 @@ class Program {
       .replace(/[\r]/g, "")
       .replace(/[\t\f ]+/g, " ")
       .split("\n")
-      .map((instruction) => instruction.trim());
+      .map((instruction) => instruction.split("//")[0].trim());
 
     // Compile instructions
     const compiledInstructions = this.compile(this.instructions);
@@ -55,6 +56,8 @@ class Program {
     const compiledLabels = this.compileLabels(instructions);
     const compiledInstructions = this.compileInstructions(compiledLabels);
 
+    console.log(compiledLabels, compiledInstructions);
+
     return compiledInstructions;
   }
 
@@ -67,7 +70,7 @@ class Program {
       // If the instruction does not start with a command, add it to the list of labelled addresses.
       if (
         ![...Object.keys(Program.instructionToDecimalMap), "dat"].some(
-          (command) => instruction.startsWith(command)
+          (command) => instructionParts.indexOf(command) === 0
         )
       )
         return [

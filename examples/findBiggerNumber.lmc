@@ -1,0 +1,14 @@
+INP
+STA inOne
+INP
+STA inTwo
+LDA inOne
+SUB inTwo
+BRP isPositive
+LDA inTwo
+OUT
+HLT
+isPositive LDA inOne
+HLT
+inOne    DAT
+inTwo    DAT
