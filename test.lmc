@@ -1,0 +1,22 @@
+        INP
+        STA VALUE
+        LDA ZERO
+        STA SUM
+        STA COUNT
+LOOP    LDA SUM
+        ADD VALUE
+        STA SUM
+        LDA COUNT
+        ADD ONE
+        STA COUNT
+        SUB VALUE
+        BRP DONE
+        BRA LOOP
+DONE    LDA SUM
+        OUT
+        HLT
+VALUE   DAT
+SUM     DAT
+COUNT   DAT
+ZERO    DAT 000
+ONE     DAT 001
