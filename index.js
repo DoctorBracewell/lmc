@@ -145,5 +145,5 @@ class Program {
 }
 
 // Initialise a program!
-const program = new Program("test.lmc");
+const program = new Program("index.lmc");
 await program.init();
