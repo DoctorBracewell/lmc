@@ -86,7 +86,7 @@ class Program {
       // Use reduce so that we can replace all instances of all labels in the instruction
       const instructionWithReplacedLabel = labels
         .reduce((acc, label) => {
-          // If the instruction defines a lebel, make sure to remove it from the start of the instruction
+          // If the instruction defines a label, make sure to remove it from the start of the instruction
           if (acc.startsWith(label.value))
             return `${acc.substring(label.value.length).trim()}`;
 
