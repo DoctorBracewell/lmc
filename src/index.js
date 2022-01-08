@@ -21,19 +21,6 @@ class Program {
     this.lmc = new LittleManComputer();
   }
 
-  static instructionToDecimalMap = {
-    add: "1",
-    sub: "2",
-    sta: "3",
-    lda: "5",
-    bra: "6",
-    brz: "7",
-    brp: "8",
-    inp: "9",
-    out: "9",
-    hlt: "0",
-  };
-
   async init() {
     this.content = await readFile(this.filePath, "utf-8");
 
