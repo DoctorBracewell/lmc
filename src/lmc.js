@@ -56,8 +56,8 @@ export class LittleManComputer {
 
   // Load an array of instructions in decimal format into RAM
   loadIntoMemory(program) {
-    for (const [index, decimalInstruction] of program.entries()) {
-      this.set(index, decimalInstruction);
+    for (const { decimal, index } of program) {
+      this.set(index, decimal);
     }
   }
 

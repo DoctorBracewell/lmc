@@ -1,7 +1,15 @@
+// When creating decimal instructions from the program we store the index as well so they can be loaded into memory by the LMC
+class DecimalInstruction {
+  constructor(decimal, index) {
+    this.decimal = decimal;
+    this.index = index;
+  }
+}
+
 class Instruction {
-  constructor(index, instruction, value) {
+  constructor(index, instruction, parameter) {
     this.instruction = instruction;
-    this.value = value ?? null;
+    this.parameter = parameter ?? null;
     this.index = index;
   }
 }
@@ -13,6 +21,7 @@ class LabelledInstruction extends Instruction {
   }
 }
 
+// Represents a line to act as a parent in the token list
 class Line {
   constructor(text, index, tokens) {
     this.text = text;
@@ -29,7 +38,7 @@ class Token {
 
   inferType(token) {
     // Instructions
-    if (Object.keys(Assembler.instructionData).includes(token))
+    if (Object.keys(Assembler.instructionsData).includes(token))
       return "instruction";
 
     // Any string that isn't a command or a number literal is a label
@@ -40,28 +49,61 @@ class Token {
 }
 
 export class Assembler {
-  static instructionData = {
+  static instructionsData = {
     add: {
-      decimal: "1",
+      decimal: 100,
       parameter: true,
     },
-    sub: {},
-    sta: {},
-    lda: {},
-    bra: {},
-    brz: {},
-    brp: {},
-    inp: {},
-    out: {},
-    hlt: {},
-    dat: {},
+    sub: {
+      decimal: 200,
+      parameter: true,
+    },
+    sta: {
+      decimal: 300,
+      parameter: true,
+    },
+    lda: {
+      decimal: 500,
+      parameter: true,
+    },
+    bra: {
+      decimal: 600,
+      parameter: true,
+    },
+    brz: {
+      decimal: 700,
+      parameter: true,
+    },
+    brp: {
+      decimal: 800,
+      parameter: true,
+    },
+    inp: {
+      decimal: 901,
+      parameter: false,
+    },
+    out: {
+      decimal: 902,
+      parameter: false,
+    },
+    hlt: {
+      decimal: 0,
+      parameter: false,
+    },
+    dat: {
+      decimal: 0,
+      parameter: true,
+    },
   };
 
   assemble(program) {
-    this.sanitisedProgram = this.sanitise(program);
-    this.tokens = this.tokenise(this.sanitisedProgram);
-    this.parsedTokens = this.parseTokens(this.tokens);
-    this.parsedLabels = this.parseLabels(this.parsedTokens);
+    const sanitisedProgram = this.sanitise(program);
+    const tokens = this.tokenise(sanitisedProgram);
+    const parsedTokens = this.parseTokens(tokens);
+    const parsedLabels = this.parseLabels(parsedTokens);
+    const assembledInstructions = this.assembleInstructions(parsedLabels);
+
+    return assembledInstructions;
   }
 
   sanitise(text) {
@@ -94,6 +136,7 @@ export class Assembler {
     const ast = lines.map(({ index, tokens, text }) => {
       const instructionParts = tokens.map((token) => token.value);
 
+      // Various self-explanatory error checks
       if (tokens.length > 3)
         throw new Error(`Too many parameters at line ${index}: ${text}`);
 
@@ -115,21 +158,35 @@ export class Assembler {
       (instruction) => instruction instanceof LabelledInstruction
     );
 
-    // For each instruction replace instances of the label
-    for (const instruction of instructions) {
-      if (instruction.value === null) continue;
+    // For label, replace any paramaters equal to that label to the label's index
+    labelledInstructions.forEach((labelledInstruction) => {
+      instructions.forEach((instruction) => {
+        if (labelledInstruction.label === instruction.parameter)
+          instruction.parameter = labelledInstruction.index;
+      });
+    });
 
-      // Use reduce here to replace all instances of the label
-      const correctedValue = labelledInstructions.reduce(
-        (acc, { label, index }) => acc.replace(label, index),
-        instruction.value ?? ""
+    return instructions;
+  }
+
+  assembleInstructions(instructions) {
+    // Map into decimal form
+    return instructions.map(({ instruction, parameter, index }) => {
+      const instructionData = Assembler.instructionsData[instruction];
+
+      // Default to 0 if a dat parameter is not provided
+      if (instruction === "dat")
+        return new DecimalInstruction(parseInt(parameter ?? 0), index);
+
+      // Add pre-set operand for parameterless commands and return without continuing - inp = 901, out = 902, hlt = 000
+      if (instructionData.parameter === false)
+        return new DecimalInstruction(parseInt(instructionData.decimal), index);
+
+      // Otherwise just add the decimal value of the instruction and the parameter
+      return new DecimalInstruction(
+        instructionData.decimal + parseInt(parameter),
+        index
       );
-
-      instruction.value = correctedValue;
-    }
-
-    console.log(instructions);
-
-    // For each labelled instruction, replace the label with the address
+    });
   }
 }
