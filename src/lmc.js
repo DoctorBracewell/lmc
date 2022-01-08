@@ -54,6 +54,13 @@ export class LittleManComputer {
     this.halted = false;
   }
 
+  // Load an array of instructions in decimal format into RAM
+  loadIntoMemory(program) {
+    for (const [index, decimalInstruction] of program.entries()) {
+      this.set(index, decimalInstruction);
+    }
+  }
+
   run() {
     // Run FDE Cycle
     while (this.halted === false) {
