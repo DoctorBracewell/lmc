@@ -8,7 +8,7 @@ This is a simple JavaScript implementation of the [Little Man Computer](https://
 
 This implementation contains the following features:
 
-- An instruction set of 11 assembly language commands, detailed [here](https://en.wikipedia.org/wiki/Little_man_computer#Commands)
+- An instruction set of 11 assembly language commands, detailed [here](https://en.wikipedia.org/wiki/Little_man_computer#Commands).
 - File comments using `//`.
 - An assembler to compile `.lmc` files into an array of decimal numbers.
 - A model of the Little Man Computer, containing:
