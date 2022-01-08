@@ -21,9 +21,9 @@ This implementation contains the following features:
 
 ## To Use
 
-- Clone or download the repository
-- Run `npm install` to download the required package
-- Look at the program loaded in `index.lmc` to add two numbers, load up a new one from the `examples/` folder or write your own.
+- Clone or download the repository.
+- Run `npm install` to download the required package for command-line input.
+- Look at the program loaded in `index.lmc` to add two numbers, load up a new one from the `examples/` folder, or write your own.
 - `npm start` to run the program in `index.lmc`.
 
 Enjoy!
