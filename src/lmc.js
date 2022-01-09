@@ -75,8 +75,10 @@ export class LittleManComputer {
       // EXECUTE
       this.executeFunction(functionToRun);
 
-      this.registers.programCounter.value =
-        this.registers.programCounter.value + 1;
+      this.registers.programCounter.value = this.alu.add(
+        this.registers.programCounter.value,
+        1
+      );
     }
   }
 
