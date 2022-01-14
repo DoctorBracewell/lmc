@@ -29,7 +29,7 @@ class Registers {
   }
 }
 
-// For the sake of ""realism""" we'll add an ALU although the functions could easily be inculuded in the LMC class
+// For the sake of """realism""" we'll add an ALU although the functions could easily be inculuded in the LMC class
 class ArithmeticLogicUnit {
   constructor() {}
 
