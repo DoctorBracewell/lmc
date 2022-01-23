@@ -14,7 +14,7 @@ This implementation contains the following features:
 - A model of the Little Man Computer, containing:
   - 3 CPU Registers
   - 100 Memory Locations
-  - Arithemtic Logic Unit
+  - Arithmetic Logic Unit
   - Control Unit (Fetch-Decode-Execute Cycle)
 - An output system using `console.log` and an input system using the [`prompt-sync`](https://www.npmjs.com/package/prompt-sync) package.
 - Basic error messages from both the assembler and computer.
