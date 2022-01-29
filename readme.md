@@ -42,7 +42,7 @@ npm start
 
 👤 **DrBracewell**
 
-- Website: https://www.brace.dev
+- Website: https://brace.dev
 - Github: [@DoctorBracewell](https://github.com/DoctorBracewell)
 
 ## Show your support
