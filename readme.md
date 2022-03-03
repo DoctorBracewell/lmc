@@ -1,7 +1,7 @@
 <h1 align="center">Welcome to the Little Man Computer 👋</h1>
 <p>
   <a href="#" target="_blank">
-    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
+    <img alt="License: MIT" src="https://img.shields.io/github/license/DoctorBracewell/lmc?style=for-the-badge" />
   </a>
 </p>
 
