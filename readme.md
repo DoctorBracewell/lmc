@@ -2,8 +2,9 @@
   
   <h1 align="center">The Little Man Computer</h1>
   <p>
-    <img alt="License: MIT" src="https://img.shields.io/github/license/DoctorBracewell/lmc?style=for-the-badge">
-    <img src="https://img.shields.io/github/v/release/DoctorBracewell/lmc?style=for-the-badge" />
+    <img alt="Github license" src="https://img.shields.io/github/license/DoctorBracewell/lmc?style=for-the-badge">
+    <img alt="Github release" src="https://img.shields.io/github/v/release/DoctorBracewell/lmc?style=for-the-badge" />
+    <img alt="GitHub issues" src="https://img.shields.io/github/issues/DoctorBracewell/lmc?style=for-the-badge">
   </p>
 </div>
 
@@ -49,6 +50,6 @@ npm start
 
 ---
 
-Feel free to ⭐️ the repo if you thought this site was cool!
+Feel free to ⭐️ the repo if you thought this project was cool!
 
 ~ Brace
