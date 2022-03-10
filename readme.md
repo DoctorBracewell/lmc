@@ -1,9 +1,11 @@
-<h1 align="center">Welcome to the Little Man Computer 👋</h1>
-<p>
-  <a href="#" target="_blank">
-    <img alt="License: MIT" src="https://img.shields.io/github/license/DoctorBracewell/lmc?style=for-the-badge" />
-  </a>
-</p>
+<div align="center">
+  
+  <h1 align="center">Welcome to the Little Man Computer 👋</h1>
+  <p>
+    <img alt="License: MIT" src="https://img.shields.io/github/license/DoctorBracewell/lmc?style=for-the-badge">
+    <img src="https://img.shields.io/github/v/release/DoctorBracewell/lmc?style=for-the-badge" />
+  </p>
+</div>
 
 This is a simple JavaScript implementation of the [Little Man Computer](https://en.wikipedia.org/wiki/Little_man_computer) - nothing fancy going on here, but it was pretty fun to work on personally!
 
