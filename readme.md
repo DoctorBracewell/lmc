@@ -1,6 +1,6 @@
 <div align="center">
   
-  <h1 align="center">Welcome to the Little Man Computer 👋</h1>
+  <h1 align="center">The Little Man Computer</h1>
   <p>
     <img alt="License: MIT" src="https://img.shields.io/github/license/DoctorBracewell/lmc?style=for-the-badge">
     <img src="https://img.shields.io/github/v/release/DoctorBracewell/lmc?style=for-the-badge" />
