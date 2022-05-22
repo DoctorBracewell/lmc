@@ -60,16 +60,15 @@ impl LittleManComputer {
 
     pub fn load_program(&mut self, instructions: Vec<usize>) {
         for (i, instruction) in instructions.iter().enumerate() {
-            self.set(i as usize, *instruction);
+            self.set(i, *instruction);
         }
     }
 
     pub fn run(&mut self) {
         while !self.flags.halted {
-            self.fetch_instruction(self.registers.program_counter.value as usize);
+            self.fetch_instruction(self.registers.program_counter.value);
 
-            let instruction =
-                self.decode_instruction(self.registers.current_instruction.value as usize);
+            let instruction = self.decode_instruction(self.registers.current_instruction.value);
 
             self.execute_instruction(instruction);
 
