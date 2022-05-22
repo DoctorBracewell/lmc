@@ -1,12 +1,6 @@
-#[derive(Debug, Default)]
+#[derive(Clone, Debug, Default)]
 struct MemoryCell {
     value: usize,
-}
-
-#[derive(Debug)]
-struct MemoryAddress {
-    cell: MemoryCell,
-    index: usize,
 }
 
 #[derive(Default)]
@@ -50,7 +44,7 @@ mod alu {
 }
 
 pub struct LittleManComputer {
-    memory: Vec<MemoryAddress>,
+    memory: Vec<MemoryCell>,
     registers: Registers,
     flags: Flags,
 }
@@ -58,12 +52,7 @@ pub struct LittleManComputer {
 impl LittleManComputer {
     pub fn new(size: usize) -> Self {
         Self {
-            memory: (0..size)
-                .map(|i| MemoryAddress {
-                    cell: MemoryCell::default(),
-                    index: i,
-                })
-                .collect(),
+            memory: vec![MemoryCell::default(); size],
             registers: Registers::default(),
             flags: Flags::default(),
         }
@@ -136,11 +125,11 @@ impl LittleManComputer {
     }
 
     fn set(&mut self, address: usize, value: usize) {
-        self.memory[address].cell.value = value;
+        self.memory[address].value = value;
     }
 
     fn get(&self, address: usize) -> usize {
-        self.memory[address].cell.value
+        self.memory[address].value
     }
 
     fn halt(&mut self) {
@@ -203,10 +192,12 @@ impl LittleManComputer {
             .read_line(&mut input)
             .expect("Error recieving input!");
 
+        println!("");
+
         self.registers.accumulator.value = input.trim().parse::<usize>().expect("Invalid Input!");
     }
 
     fn output(&self) {
-        println!("\nOutput: {}", self.registers.accumulator.value);
+        println!("{}", self.registers.accumulator.value);
     }
 }

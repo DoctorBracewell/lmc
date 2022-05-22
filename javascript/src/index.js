@@ -2,13 +2,6 @@ import { readFile } from "fs/promises";
 import { LittleManComputer } from "./lmc.js";
 import { Assembler } from "./assembler.js";
 
-class InstructionLabel {
-  constructor(value, address) {
-    this.value = value;
-    this.address = address;
-  }
-}
-
 class Program {
   constructor(filePath) {
     // Read the `.lmc` file
@@ -36,5 +29,5 @@ class Program {
 }
 
 // Initialise a program!
-const program = new Program("index.lmc");
+const program = new Program("../index.lmc");
 await program.init();
