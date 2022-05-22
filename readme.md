@@ -15,7 +15,7 @@ This is a collection of implementations of the [Little Man Computer](https://en.
 ## Project Layout
 Each language folder contains the full project that acts as the implementation of the computer in that language. Where possible, project files will live in the root of that folder, and the implementation source code will be in a `src/` folder. Any dependencies or output folders will generated with the language deafults.
 
-Each implementation aims to include the following features
+Each implementation aims to include the following features:
 
 - An entry point that will accept a path to a `.lmc` file.
 
